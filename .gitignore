@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# build output
+/build
+
+# system files
+.DS_Store
+.env
+
+# testing
+coverage
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor settings
+.vscode/
+.idea/

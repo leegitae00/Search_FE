@@ -27,7 +27,7 @@ function TopicSearchPage() {
 
     try {
       // 백엔드 API 호출
-      const response = await fetch('https://search-be-godo.onrender.com/topic-search', {
+      const response = await fetch('https://search-be-t5xp.onrender.com/topic-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

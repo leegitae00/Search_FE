@@ -115,7 +115,13 @@ function TopicSearchPage() {
   return (
     <div style={{ padding: '20px' }}>
 
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '600px',
+        marginTop: '40px',
+      }}>
         <input
           type="text"
           placeholder="Enter Keywords"
@@ -147,6 +153,7 @@ function TopicSearchPage() {
           Search
         </button>
       </div>
+
 
       {loading && <p>로딩 중...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}

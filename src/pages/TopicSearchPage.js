@@ -124,7 +124,7 @@ function TopicSearchPage() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '600px',
+        marginBottom: '450px',
         marginTop: '40px',
       }}>
         <input
@@ -193,12 +193,32 @@ function TopicSearchPage() {
               flex: 1,
               padding: '10px',
               border: '1px solid #ddd',
-              borderRadius: '5px',
+              borderRadius: '50px',
               backgroundColor: '#333',
               margin: '0 10px',
-              color: 'white'
+              color: 'white',
+              textAlign: 'center'
             }}>
-              <h3 style={{ color: '#36A2EB', textAlign: 'center', fontSize: '35px' }}>POSITIVE</h3>
+              {/* ✅ 이미지 추가 */}
+              <img
+                src="/1.png" // 또는 외부 이미지 URL 가능
+                alt="긍정 이미지"
+                style={{ width: '200px', height: '200px', objectFit: 'contain', marginBottom: '10px' }}
+              />
+              {/* ✅ 가운데 정렬을 보장하는 래퍼 div 추가 */}
+              <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <h3 style={{
+                  color: 'white',
+                  fontSize: '35px',
+                  backgroundColor: '#444',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  display: 'inline-block'
+                }}>
+                  Positive
+                </h3>
+              </div>
+
               {positiveNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>
@@ -216,12 +236,31 @@ function TopicSearchPage() {
               flex: 1,
               padding: '10px',
               border: '1px solid #ddd',
-              borderRadius: '5px',
+              borderRadius: '50px',
               backgroundColor: '#333',
               margin: '0 10px',
-              color: 'white'
+              color: 'white',
+              textAlign: 'center'
             }}>
-              <h3 style={{ color: '#FFCE56', textAlign: 'center', fontSize: '35px' }}>NEUTRAL</h3>
+              {/* ✅ 이미지 추가 */}
+              <img
+                src="/2.png" // 또는 외부 이미지 URL 가능
+                alt="중립 이미지"
+                style={{ width: '200px', height: '200px', objectFit: 'contain', marginBottom: '10px' }}
+              />
+              {/* ✅ 가운데 정렬을 보장하는 래퍼 div 추가 */}
+              <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <h3 style={{
+                  color: 'white',
+                  fontSize: '35px',
+                  backgroundColor: '#444',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  display: 'inline-block'
+                }}>
+                  Neutral
+                </h3>
+              </div>
               {neutralNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>
@@ -239,12 +278,32 @@ function TopicSearchPage() {
               flex: 1,
               padding: '10px',
               border: '1px solid #ddd',
-              borderRadius: '5px',
+              borderRadius: '50px',
               backgroundColor: '#333',
               margin: '0 10px',
-              color: 'white'
+              color: 'white',
+              textAlign: 'center'
             }}>
-              <h3 style={{ color: '#FF6384', textAlign: 'center', fontSize: '35px' }}>NEGATIVE</h3>
+              {/* ✅ 이미지 추가 */}
+              <img
+                src="/3.png" // 또는 외부 이미지 URL 가능
+                alt="부정 이미지"
+                style={{ width: '200px', height: '200px', objectFit: 'contain', marginBottom: '10px' }}
+              />
+              {/* ✅ 가운데 정렬을 보장하는 래퍼 div 추가 */}
+              <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <h3 style={{
+                  color: 'white',
+                  fontSize: '35px',
+                  backgroundColor: '#444',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  display: 'inline-block'
+                }}>
+                  Negative
+                </h3>
+              </div>
+
               {negativeNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>
@@ -259,15 +318,15 @@ function TopicSearchPage() {
           </div>
 
           {/* 전체 뉴스 보기 버튼 */}
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <div style={{ marginTop: '100px', textAlign: 'center' }}>
             <button
               onClick={toggleShowAllNews}
               style={{
                 padding: '10px 20px',
-                backgroundColor: '#007BFF',
+                backgroundColor: 'tan',
                 color: 'white',
                 border: 'none',
-                borderRadius: '5px',
+                borderRadius: '7px',
                 cursor: 'pointer',
               }}
             >
@@ -301,7 +360,7 @@ function TopicSearchPage() {
                     style={{
                       padding: '10px 20px',
                       margin: '0 10px',
-                      backgroundColor: label === filter ? '#007BFF' : '#ddd',
+                      backgroundColor: label === filter ? 'tan' : '#ddd',
                       color: label === filter ? 'white' : 'black',
                       border: 'none',
                       borderRadius: '5px',

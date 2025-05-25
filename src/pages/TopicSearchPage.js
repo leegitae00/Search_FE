@@ -94,16 +94,21 @@ function TopicSearchPage() {
     }],
   };
 
-  const chartOptions = { // 차트 옵션
+  const chartOptions = {
     plugins: {
-      legend: { position: 'top' },
+      legend: {
+        position: 'top',
+        labels: {
+          color: 'white'  // ✅ 여기 추가: 라벨 글씨를 흰색
+        }
+      },
       tooltip: {
         callbacks: {
           label: (context) => {
-            const total = context.dataset.data.reduce((a, b) => a + b, 0); // 전체 합계 계산
-            const value = context.raw; // 현재 값
-            const percentage = ((value / total) * 100).toFixed(1); // 백분율 계산
-            return `${context.label}: ${value}개 (${percentage}%)`; // 개수와 퍼센트 함께 표시
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const value = context.raw;
+            const percentage = ((value / total) * 100).toFixed(1);
+            return `${context.label}: ${value}개 (${percentage}%)`;
           },
         },
       },
@@ -164,7 +169,16 @@ function TopicSearchPage() {
             maxWidth: '350px',
             margin: '20px auto',
           }}>
-            <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>감정 분석 결과</h3>
+            <h3 style={{
+              textAlign: 'center',
+              marginBottom: '10px',
+              color: 'white',
+              backgroundColor: '#444444', // 어두운 회색 ~ 검정
+              padding: '10px',
+              borderRadius: '9px'
+            }}>
+              Sentiment Analysis
+            </h3>
             <Pie data={chartData} options={chartOptions} />
           </div>
 
@@ -180,10 +194,11 @@ function TopicSearchPage() {
               padding: '10px',
               border: '1px solid #ddd',
               borderRadius: '5px',
-              backgroundColor: '#36A2EB22',
+              backgroundColor: '#333',
               margin: '0 10px',
+              color: 'white'
             }}>
-              <h3 style={{ color: '#36A2EB', textAlign: 'center' }}>긍정</h3>
+              <h3 style={{ color: '#36A2EB', textAlign: 'center', fontSize: '35px' }}>POSITIVE</h3>
               {positiveNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>
@@ -202,10 +217,11 @@ function TopicSearchPage() {
               padding: '10px',
               border: '1px solid #ddd',
               borderRadius: '5px',
-              backgroundColor: '#FFCE5622',
+              backgroundColor: '#333',
               margin: '0 10px',
+              color: 'white'
             }}>
-              <h3 style={{ color: '#FFCE56', textAlign: 'center' }}>중립</h3>
+              <h3 style={{ color: '#FFCE56', textAlign: 'center', fontSize: '35px' }}>NEUTRAL</h3>
               {neutralNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>
@@ -224,10 +240,11 @@ function TopicSearchPage() {
               padding: '10px',
               border: '1px solid #ddd',
               borderRadius: '5px',
-              backgroundColor: '#FF638422',
+              backgroundColor: '#333',
               margin: '0 10px',
+              color: 'white'
             }}>
-              <h3 style={{ color: '#FF6384', textAlign: 'center' }}>부정</h3>
+              <h3 style={{ color: '#FF6384', textAlign: 'center', fontSize: '35px' }}>NEGATIVE</h3>
               {negativeNews.map((news, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
                   <h4>

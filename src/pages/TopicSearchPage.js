@@ -353,7 +353,7 @@ function TopicSearchPage() {
             border: '1px solid #ddd',
             borderRadius: '5px',
             backgroundColor: '#f9f9f9',
-            maxHeight: '500px',
+            maxHeight: '2800px',
             overflowY: 'scroll',
           }}>
             <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>전체 뉴스</h3>

@@ -10,7 +10,7 @@ function TopicSearchPage() {
   const [sentimentCounts, setSentimentCounts] = useState({ 긍정: 0, 부정: 0, 중립: 0 }); // 감정 결과 카운트
   const [loading, setLoading] = useState(false); // 로딩 상태
   const [error, setError] = useState(null); // 에러 상태
-  const [showAllNews, setShowAllNews] = useState(false); // 전체 뉴스 보기 상태
+  // const [showAllNews, setShowAllNews] = useState(false); // 전체 뉴스 보기 상태
   const [filter, setFilter] = useState('전체'); // 필터링 상태
 
   const handleSearch = async () => {
@@ -71,10 +71,10 @@ function TopicSearchPage() {
     }
   };
 
-  const toggleShowAllNews = () => {
-    setShowAllNews(!showAllNews); // 클릭 시 상태 변경
-    if (!showAllNews) setFilter('전체'); // 전체 뉴스 보기 초기화
-  };
+  // const toggleShowAllNews = () => {
+  //   setShowAllNews(!showAllNews); // 클릭 시 상태 변경
+  //   if (!showAllNews) setFilter('전체'); // 전체 뉴스 보기 초기화
+  // };
 
   const positiveNews = results.filter(news => news.sentiment === '긍정').slice(0, 3);
   const neutralNews = results.filter(news => news.sentiment === '중립').slice(0, 3);
@@ -220,7 +220,10 @@ function TopicSearchPage() {
               </div>
 
               {positiveNews.map((news, index) => (
-                <div key={index} style={{ marginBottom: '10px' }}>
+                <div key={index} style={{
+                  marginBottom: '10px',
+                  textAlign: 'left'  // ✅ 왼쪽 정렬 추가
+                }}>
                   <h4>
                     <a href={news.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#36A2EB' }}>
                       {news.title}
@@ -262,7 +265,10 @@ function TopicSearchPage() {
                 </h3>
               </div>
               {neutralNews.map((news, index) => (
-                <div key={index} style={{ marginBottom: '10px' }}>
+                <div key={index} style={{
+                  marginBottom: '10px',
+                  textAlign: 'left'  // ✅ 왼쪽 정렬 추가
+                }}>
                   <h4>
                     <a href={news.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFCE56' }}>
                       {news.title}
@@ -271,6 +277,7 @@ function TopicSearchPage() {
                   <p>{news.content_summarized}</p>
                 </div>
               ))}
+
             </div>
 
             {/* 부정 섹션 */}
@@ -305,7 +312,10 @@ function TopicSearchPage() {
               </div>
 
               {negativeNews.map((news, index) => (
-                <div key={index} style={{ marginBottom: '10px' }}>
+                <div key={index} style={{
+                  marginBottom: '10px',
+                  textAlign: 'left'  // ✅ 왼쪽 정렬 추가
+                }}>
                   <h4>
                     <a href={news.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FF6384' }}>
                       {news.title}
@@ -314,10 +324,11 @@ function TopicSearchPage() {
                   <p>{news.content_summarized}</p>
                 </div>
               ))}
+
             </div>
           </div>
 
-          {/* 전체 뉴스 보기 버튼 */}
+          {/* 전체 뉴스 보기 버튼
           <div style={{ marginTop: '100px', textAlign: 'center' }}>
             <button
               onClick={toggleShowAllNews}
@@ -332,74 +343,74 @@ function TopicSearchPage() {
             >
               {showAllNews ? '전체 뉴스 닫기' : '전체 뉴스 보기'}
             </button>
-          </div>
+          </div> */}
+
 
           {/* 전체 뉴스 섹션 */}
-          {showAllNews && (
+          <div style={{
+            marginTop: '20px',
+            padding: '20px',
+            border: '1px solid #ddd',
+            borderRadius: '5px',
+            backgroundColor: '#f9f9f9',
+            maxHeight: '500px',
+            overflowY: 'scroll',
+          }}>
+            <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>전체 뉴스</h3>
+
+            {/* 필터 버튼 */}
             <div style={{
-              marginTop: '20px',
-              padding: '20px',
-              border: '1px solid #ddd',
-              borderRadius: '5px',
-              backgroundColor: '#f9f9f9',
-              maxHeight: '500px',
-              overflowY: 'scroll',
+              display: 'flex',
+              justifyContent: 'center',
+              marginBottom: '20px',
             }}>
-              <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>전체 뉴스</h3>
-
-              {/* 필터 버튼 */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginBottom: '20px',
-              }}>
-                {['전체', '긍정', '부정', '중립'].map(label => (
-                  <button
-                    key={label}
-                    onClick={() => setFilter(label)}
-                    style={{
-                      padding: '10px 20px',
-                      margin: '0 10px',
-                      backgroundColor: label === filter ? 'tan' : '#ddd',
-                      color: label === filter ? 'white' : 'black',
-                      border: 'none',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              {/* 필터된 뉴스 */}
-              {filteredNews.map((news, index) => (
-                <div key={index} style={{
-                  marginBottom: '10px',
-                  padding: '10px',
-                  borderBottom: '1px solid #eee',
-                }}>
-                  <h4>
-                    <a
-                      href={news.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ textDecoration: 'none', color: 'black' }}
-                    >
-                      {news.title}
-                    </a>
-                  </h4>
-                  <p>{news.content_summarized}</p>
-                  <span style={{
-                    color: news.sentiment === '긍정' ? 'blue'
-                      : news.sentiment === '부정' ? 'red' : 'orange',
-                  }}>
-                    {news.sentiment}
-                  </span>
-                </div>
+              {['전체', '긍정', '부정', '중립'].map(label => (
+                <button
+                  key={label}
+                  onClick={() => setFilter(label)}
+                  style={{
+                    padding: '10px 20px',
+                    margin: '0 10px',
+                    backgroundColor: label === filter ? 'tan' : '#ddd',
+                    color: label === filter ? 'white' : 'black',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {label}
+                </button>
               ))}
             </div>
-          )}
+
+            {/* 필터된 뉴스 목록 */}
+            {filteredNews.map((news, index) => (
+              <div key={index} style={{
+                marginBottom: '10px',
+                padding: '10px',
+                borderBottom: '1px solid #eee',
+              }}>
+                <h4>
+                  <a
+                    href={news.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none', color: 'black' }}
+                  >
+                    {news.title}
+                  </a>
+                </h4>
+                <p>{news.content_summarized}</p>
+                <span style={{
+                  color: news.sentiment === '긍정' ? 'blue'
+                    : news.sentiment === '부정' ? 'red' : 'orange',
+                }}>
+                  {news.sentiment}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </>
       )}
     </div>

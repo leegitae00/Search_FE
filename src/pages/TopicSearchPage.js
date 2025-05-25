@@ -27,7 +27,7 @@ function TopicSearchPage() {
 
     try {
       // 백엔드 API 호출
-      const response = await fetch('https://search-be-t5xp.onrender.com/topic-search', {
+      const response = await fetch('http://127.0.0.1:10000/topic-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,21 +114,37 @@ function TopicSearchPage() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>검색하고 싶은 키워드를 입력하세요.(예: 비트코인, 크리스마스)</h2>
+
       <div style={{ marginBottom: '20px' }}>
         <input
           type="text"
-          placeholder="검색 주제 입력"
+          placeholder="Enter Keywords"
           value={topic}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
-          style={{ padding: '10px', width: '80%' }}
+          style={{
+            padding: '10px 15px',
+            width: '250px',
+            fontSize: '16px',
+            border: '1px solid #ccc',
+            borderRadius: '7px',
+            outline: 'none',
+            boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.1)'
+          }}
         />
         <button
           onClick={handleSearch}
-          style={{ padding: '10px 20px', marginLeft: '10px' }}
+          style={{
+            padding: '10px 20px',
+            marginLeft: '10px',
+            backgroundColor: 'tan',
+            color: 'black',
+            border: 'none',
+            borderRadius: '7px',
+            cursor: 'pointer'
+          }}
         >
-          검색
+          Search
         </button>
       </div>
 

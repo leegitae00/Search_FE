@@ -27,7 +27,7 @@ function TopicSearchPage() {
 
     try {
       // 백엔드 API 호출
-      const response = await fetch('http://127.0.0.1:10000/topic-search', {
+      const response = await fetch('https://search-be-t5xp.onrender.com/topic-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
